@@ -21,9 +21,21 @@ describe("Game", function() {
   });
   it("subtract from starting score by 1", function() {
     var testGame = new Game();
-    expect(testGame.subtractTries).to.equal(5);
+    expect(testGame.subtractTries()).to.equal(5);
+  });
+  it("will end the game when game.tries equals 0", function() {
+    var testGame = new Game();
+    expect(testGame.gameOver()).to.equal("you lose");
   });
 });
+
+describe("Player", function() {
+  it("creates a player to fuck off", function() {
+    var testGame = new Game();
+    expect(testGame.tries).to.equal(6);
+  });
+});
+
 // describe("WordEncrypt", function() {
 //   it("will encrypt words for game", function() {
 //     var testWordEncrypt = new WordEncrypt();
