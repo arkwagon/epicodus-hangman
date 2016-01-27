@@ -11,3 +11,5 @@ WordBank.prototype.wordSelector = function() {
 WordBank.prototype.encryptWord = function() {
   return ("_ ").repeat(this.wordSelector().length);
 }
+
+// function 

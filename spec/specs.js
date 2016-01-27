@@ -13,6 +13,13 @@ describe("WordBank", function() {
     expect(testWordBank.encryptWord()).to.equal("_ _ _ _ _ ");
   });
 });
+
+describe("Game", function() {
+  it("creates a new game with a starting score of 6", function() {
+    var testGame = new Game();
+    expect(testGame.score).to.equal(6);
+  });
+});
 // describe("WordEncrypt", function() {
 //   it("will encrypt words for game", function() {
 //     var testWordEncrypt = new WordEncrypt();
