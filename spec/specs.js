@@ -10,7 +10,7 @@ describe("WordBank", function() {
   });
   it("will encrypt words for game", function() {
     var testWordBank = new WordBank();
-    expect(testWordBank.encrypt).to.equal("_ _ _ _ _");
+    expect(testWordBank.encryptWord()).to.equal("_ _ _ _ _ ");
   });
 });
 // describe("WordEncrypt", function() {
