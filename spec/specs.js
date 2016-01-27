@@ -17,7 +17,11 @@ describe("WordBank", function() {
 describe("Game", function() {
   it("creates a new game with a starting score of 6", function() {
     var testGame = new Game();
-    expect(testGame.score).to.equal(6);
+    expect(testGame.tries).to.equal(6);
+  });
+  it("subtract from starting score by 1", function() {
+    var testGame = new Game();
+    expect(testGame.subtractTries).to.equal(5);
   });
 });
 // describe("WordEncrypt", function() {

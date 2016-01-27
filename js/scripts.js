@@ -12,4 +12,6 @@ WordBank.prototype.encryptWord = function() {
   return ("_ ").repeat(this.wordSelector().length);
 }
 
-// function 
+function Game() {
+  this.tries = 6;
+}
