@@ -27,14 +27,32 @@ describe("Game", function() {
     var testGame = new Game();
     expect(testGame.gameOver()).to.equal("you lose");
   });
+  it("will create an array with the alphabet in it", function() {
+    var testGame = new Game();
+    expect(testGame.letters).to.eql( ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"] );
+  });
+  it("will create an array for tried letters to be pushed in to", function() {
+    var testGame = new Game();
+    expect(testGame.triedLetters).to.eql([]);
+  });
+  it("will push letters into triedLetters", function() {
+    var testGame = new Game();
+    testGame.usedLetter("a");
+    expect(testGame.triedLetters).to.eql(["a"]);
+  });
+  // it("will compare userInputLetter to puzzleWord and return true if there is a match", function() {
+  //   var testGame = new Game();
+  //   testGame.wordSelector();
+  //   expect(testGame.triedLetters).to.eql(["a"]);
+  // });
 });
 
-describe("Player", function() {
-  it("creates a player to fuck off", function() {
-    var testGame = new Game();
-    expect(testGame.tries).to.equal(6);
-  });
-});
+// describe("Player", function() {
+//   it("creates a player to fuck off", function() {
+//     var testGame = new Game();
+//     expect(testGame.tries).to.equal(6);
+//   });
+// });
 
 // describe("WordEncrypt", function() {
 //   it("will encrypt words for game", function() {
