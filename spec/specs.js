@@ -3,7 +3,6 @@ describe("WordBank", function() {
     var testWordBank = new WordBank();
     expect(testWordBank.wordArray).to.eql(["candy"]);
   });
-
   it("returns a word from WordBank's wordArray", function() {
     var testWordBank = new WordBank();
     expect(testWordBank.wordSelector()).to.equal("candy");
@@ -12,10 +11,23 @@ describe("WordBank", function() {
     var testWordBank = new WordBank();
     expect(testWordBank.encryptWord()).to.equal("_ _ _ _ _ ");
   });
+  it("will create an array with the alphabet in it", function() {
+    var testWordBank = new WordBank();
+    expect(testWordBank.letters).to.eql( ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"] );
+  });
+  it("will create an array for tried letters to be pushed in to", function() {
+    var testWordBank = new WordBank();
+    expect(testWordBank.triedLetters).to.eql([]);
+  });
   it("will compare userInputLetter to puzzleWord and replace matches with the appropriate letter", function() {
     var testWordBank = new WordBank();
     testWordBank.wordSelector();
-    expect(testWordBank.compareLetter("y")).to.equal("_ _ _ _ y ");
+    expect(testWordBank.compareAndReplaceLetter("y")).to.equal("_ _ _ _ y ");
+  });
+  it("will push tried letters into the triedLetters array", function() {
+    var testWordBank = new WordBank();
+    testWordBank.usedLetter("y");
+    expect(testWordBank.triedLetters).to.include("y");
   });
 
 });
@@ -33,24 +45,6 @@ describe("Game", function() {
     var testGame = new Game();
     expect(testGame.gameOver()).to.equal("you lose");
   });
-  it("will create an array with the alphabet in it", function() {
-    var testGame = new Game();
-    expect(testGame.letters).to.eql( ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"] );
-  });
-  it("will create an array for tried letters to be pushed in to", function() {
-    var testGame = new Game();
-    expect(testGame.triedLetters).to.eql([]);
-  });
-  it("will push letters into triedLetters", function() {
-    var testGame = new Game();
-    testGame.usedLetter("a");
-    expect(testGame.triedLetters).to.eql(["a"]);
-  });
-  it("will push tried letters into the triedLetters array", function() {
-    var testGame = new Game();
-    testGame.usedLetter("y");
-    expect(testGame.triedLetters).to.include("y");
-  });
 });
 
 // describe("Player", function() {
@@ -65,4 +59,10 @@ describe("Game", function() {
 //     var testWordEncrypt = new WordEncrypt();
 //     expect(testWordBank.wordArray).to.eql(["_ _ _ _ _"]);
 //   });
+// });
+
+// it("will push letters into triedLetters", function() {
+//   var testGame = new Game();
+//   testGame.usedLetter("a");
+//   expect(testGame.triedLetters).to.eql(["a"]);
 // });
