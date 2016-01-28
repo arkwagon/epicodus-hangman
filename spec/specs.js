@@ -47,26 +47,3 @@ describe("HangmanGame", function() {
     expect(testHangmanGame.gameWinner()).to.equal("You win you goof!");
   });
 });
-
-describe("Game", function() {
-});
-
-// describe("Player", function() {
-//   it("creates a player to fuck off", function() {
-//     var testGame = new Game();
-//     expect(testGame.tries).to.equal(6);
-//   });
-// });
-
-// describe("WordEncrypt", function() {
-//   it("will encrypt words for game", function() {
-//     var testWordEncrypt = new WordEncrypt();
-//     expect(testHangmanGame.wordArray).to.eql(["_ _ _ _ _"]);
-//   });
-// });
-
-// it("will push letters into triedLetters", function() {
-//   var testGame = new Game();
-//   testGame.usedLetter("a");
-//   expect(testGame.triedLetters).to.eql(["a"]);
-// });

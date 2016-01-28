@@ -4,7 +4,7 @@
 // =======================================
 
 function HangmanGame() {
-  this.wordArray = ["candy"];
+  this.wordArray = ["candy"]
   this.letters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
   this.triedLetters = [];
   this.tries = 6;
