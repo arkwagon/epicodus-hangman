@@ -19,13 +19,15 @@ WordBank.prototype.encryptWord = function() {
 WordBank.prototype.compareLetter = function(letter) {
   for (var index = 0; index < this.wordSelector().length; index++ )
     if (this.wordSelector()[index] === letter) {
-      var frontWordSlice = this.encryptWord().slice(0, index + 1);
-      var backWordSlice = this.encryptWord().slice(index + 2);
-      var updatedWord = frontWordSlice + letter + backWordSlice;
+      var encryptWordNoSpaces = this.encryptWord().split(' ');
+      var frontWordSlice = encryptWordNoSpaces.slice(0, index).join(' ');
+      var backWordSlice = encryptWordNoSpaces.slice(index + 1).join(' ');
+      var updatedWord = frontWordSlice + " " + letter + " " + backWordSlice;
       return updatedWord;
-            // var halfWayThere = this.encryptWord().slice((index + 1));
-
-    }
+    } //else {
+  Game.usedLetter(letter);
+    //   Game.usedLetter(letter);
+    // }
 }
 
 
@@ -38,7 +40,7 @@ function Game() {
   this.triedLetters = [];
   this.tries = 6;
   this.userInputLetter;
-  var gameWords = new WordBank();
+  this.wordBank = new WordBank();
 
   if (this.tries === 0) {
     return this.gameOver;
@@ -52,7 +54,6 @@ Game.prototype.subtractTries = function() {
 Game.prototype.usedLetter = function(letter) {
   return this.triedLetters.push(letter);
 }
-
 
 Game.prototype.gameOver = function() {
   return "you lose";

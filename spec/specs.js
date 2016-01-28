@@ -12,11 +12,12 @@ describe("WordBank", function() {
     var testWordBank = new WordBank();
     expect(testWordBank.encryptWord()).to.equal("_ _ _ _ _ ");
   });
-  it("will compare userInputLetter to puzzleWord and return true if there is a match", function() {
+  it("will compare userInputLetter to puzzleWord and replace matches with the appropriate letter", function() {
     var testWordBank = new WordBank();
     testWordBank.wordSelector();
-    expect(testWordBank.compareLetter("a")).to.equal("_ a _ _ _ ");
+    expect(testWordBank.compareLetter("y")).to.equal("_ _ _ _ y ");
   });
+
 });
 
 describe("Game", function() {
@@ -44,6 +45,11 @@ describe("Game", function() {
     var testGame = new Game();
     testGame.usedLetter("a");
     expect(testGame.triedLetters).to.eql(["a"]);
+  });
+  it("will push tried letters into the triedLetters array", function() {
+    var testGame = new Game();
+    testGame.usedLetter("y");
+    expect(testGame.triedLetters).to.include("y");
   });
 });
 
