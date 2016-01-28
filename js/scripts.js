@@ -3,22 +3,28 @@
 // Word selection/encrytion/comparisons
 // =======================================
 
-function WordBank() {
+function HangmanGame() {
   this.wordArray = ["candy"];
   this.letters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
   this.triedLetters = [];
+  this.tries = 6;
+  this.userInputLetter;
+  // this.HangmanGame = new HangmanGame();
+  if (this.tries === 0) {
+    return this.gameOver;
+  }
 }
 
-WordBank.prototype.wordSelector = function() {
+HangmanGame.prototype.wordSelector = function() {
   var puzzleWord = this.wordArray[Math.floor(Math.random() * (this.wordArray.length))];
   return puzzleWord;
 }
 
-WordBank.prototype.encryptWord = function() {
+HangmanGame.prototype.encryptWord = function() {
   return ("_ ").repeat(this.wordSelector().length);
 }
 
-WordBank.prototype.compareAndReplaceLetter = function(letter) {
+HangmanGame.prototype.compareAndReplaceLetter = function(letter) {
   this.usedLetter(letter);
 
   for (var index = 0; index < this.wordSelector().length; index++ ) {
@@ -29,33 +35,20 @@ WordBank.prototype.compareAndReplaceLetter = function(letter) {
       var updatedWord = frontWordSlice + " " + letter + " " + backWordSlice;
       return updatedWord;
     } else {
-      // tries -= 1
+      this.subtractTries();
     }
   }
 }
 
-WordBank.prototype.usedLetter = function(letter) {
+HangmanGame.prototype.usedLetter = function(letter) {
   return this.triedLetters.push(letter);
 }
-
-// =======================================
-// Game class
-// =======================================
-
-function Game() {
-  this.tries = 6;
-  this.userInputLetter;
-  // this.wordBank = new WordBank();
-  if (this.tries === 0) {
-    return this.gameOver;
-  }
-}
-
-Game.prototype.subtractTries = function() {
+HangmanGame.prototype.subtractTries = function() {
   return this.tries -= 1;
 }
-
-
-Game.prototype.gameOver = function() {
+HangmanGame.prototype.gameOver = function() {
   return "you lose";
+}
+HangmanGame.prototype.gameWinner = function() {
+  return true;
 }
