@@ -1,6 +1,6 @@
 
 // =======================================
-// Word selection/encrytion/comparisons
+// Hangman Game
 // =======================================
 
 function HangmanGame() {
@@ -9,10 +9,7 @@ function HangmanGame() {
   this.triedLetters = [];
   this.tries = 6;
   this.userInputLetter;
-  // this.HangmanGame = new HangmanGame();
-  if (this.tries === 0) {
-    return this.gameOver;
-  }
+
 }
 
 HangmanGame.prototype.wordSelector = function() {
@@ -32,8 +29,12 @@ HangmanGame.prototype.compareAndReplaceLetter = function(letter) {
       var encryptWordNoSpaces = this.encryptWord().split(' ');
       var frontWordSlice = encryptWordNoSpaces.slice(0, index).join(' ');
       var backWordSlice = encryptWordNoSpaces.slice(index + 1).join(' ');
-      var updatedWord = frontWordSlice + " " + letter + " " + backWordSlice;
-      return updatedWord;
+      var updatedEncryptedWord = frontWordSlice + " " + letter + " " + backWordSlice;
+      if (updatedEncryptedWord.split(' ').join('') === this.wordSelector) {
+        return this.gameWinner();
+      } else {
+        return updatedEncryptedWord;
+      }
     } else {
       this.subtractTries();
     }
@@ -43,12 +44,17 @@ HangmanGame.prototype.compareAndReplaceLetter = function(letter) {
 HangmanGame.prototype.usedLetter = function(letter) {
   return this.triedLetters.push(letter);
 }
+
 HangmanGame.prototype.subtractTries = function() {
   return this.tries -= 1;
 }
+
 HangmanGame.prototype.gameOver = function() {
-  return "you lose";
+  if (this.tries === 0) {
+    return "The correct answer is: " + this.wordSelector() + "," + " Loser!";
+  }
 }
+
 HangmanGame.prototype.gameWinner = function() {
-  return true;
+    return "You win you goof!";
 }

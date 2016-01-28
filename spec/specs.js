@@ -37,14 +37,14 @@ describe("HangmanGame", function() {
     var testHangmanGame = new HangmanGame();
     expect(testHangmanGame.subtractTries()).to.equal(5);
   });
-  it("will end the game when game.tries equals 0", function() {
+  it("will end the game when tries equals 0", function() {
     var testHangmanGame = new HangmanGame();
-    expect(testHangmanGame.gameOver()).to.equal("you lose");
+    testHangmanGame.tries = 0;
+    expect(testHangmanGame.gameOver()).to.equal("The correct answer is: candy, Loser!");
   });
   it("will determine if puzzleWord has been solved", function() {
     var testHangmanGame = new HangmanGame();
-    // testHangmanGame.wordSelector();
-    expect(testHangmanGame.gameWinner()).to.equal(true);
+    expect(testHangmanGame.gameWinner()).to.equal("You win you goof!");
   });
 });
 
