@@ -12,6 +12,11 @@ describe("WordBank", function() {
     var testWordBank = new WordBank();
     expect(testWordBank.encryptWord()).to.equal("_ _ _ _ _ ");
   });
+  it("will compare userInputLetter to puzzleWord and return true if there is a match", function() {
+    var testWordBank = new WordBank();
+    testWordBank.wordSelector();
+    expect(testWordBank.compareLetter("a")).to.equal("_ a _ _ _ ");
+  });
 });
 
 describe("Game", function() {
@@ -40,11 +45,6 @@ describe("Game", function() {
     testGame.usedLetter("a");
     expect(testGame.triedLetters).to.eql(["a"]);
   });
-  // it("will compare userInputLetter to puzzleWord and return true if there is a match", function() {
-  //   var testGame = new Game();
-  //   testGame.wordSelector();
-  //   expect(testGame.triedLetters).to.eql(["a"]);
-  // });
 });
 
 // describe("Player", function() {
