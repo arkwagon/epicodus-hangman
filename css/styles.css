@@ -1,0 +1,11 @@
+.letterBank {
+  list-style-type: none;
+}
+
+.btn {
+  display: inline block;
+  float: left;
+  margin-left: 3px;
+  margin-right: 3px;
+
+}

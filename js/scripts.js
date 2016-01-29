@@ -5,7 +5,7 @@
 
 function HangmanGame() {
   this.wordArray = ["candy","barf","sky"]
-  this.letters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+  this.letters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"].join(' ');
   this.triedLetters = [];
   this.tries = 6;
   this.userInputLetter;
@@ -67,7 +67,17 @@ $(document).ready(function() {
 
   $("span#triesLeft").append(newHangmanGame.tries);
   $("span#newPuzzle").append(newHangmanGame.encryptWord());
+  $("span#usedLetterBank").append(newHangmanGame.triedLetters);
 
+  for (var index = 0; index < newHangmanGame.letters.length; index += 2) {
+    $("span#letterBank").append("<li><button type='button' class='btn btn-primary' value='" + newHangmanGame.letters[index] + "'>" + newHangmanGame.letters[index] + "</button></li>");
+  }
+
+  $('.btn').click(function() {
+    var buttonValue = $(this).val();
+    alert(buttonValue);
+    newHangmanGame.compareAndReplaceLetter(buttonValue);
+  })
   // $("form#pingPong").submit(function(event) {
   // event.preventDefault();
   //
